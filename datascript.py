@@ -1,5 +1,3 @@
-### if you're not excited - get excited ###
-
 ### education is something you can't finish ###
 
 # This is a naive script
