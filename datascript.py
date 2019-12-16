@@ -44,7 +44,7 @@ df4.info() # know your data
 df4.head(3) # verify what you see
 df4.tail(3) # keep verifying what you see
 
-uniqueAdresses = requests.get('https://api.blockchain.info/charts/n-unique-addresses?timespan=all&format=json&sampled=false') # transaction cost USD
+uniqueAdresses = requests.get('https://api.blockchain.info/charts/n-unique-addresses?timespan=all&format=json&sampled=false') # unique addresses
 uniqueAdresses.status_code # if 200 - success, else - fail
 uniques = uniqueAdresses.json() # to json
 nUniques_values = uniques['values'] # get only values
