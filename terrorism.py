@@ -34,12 +34,23 @@ data1997.info()
 data1997.head(3)
 data1997.tail(3)
 data1997 = data1997.fillna(0) # fill na's for representativeness, otherwise you'll end-up removing big subsets of data
+dict_map = {'Armed Assault':1 , 
+            'Facility/Infrastructure Attack': 2, 
+            'Bombing/Explosion': 3,
+            'Assasination': 4,
+            'Unknown': 5,
+            'Hijacking': 6,
+            'Hostage Taking (Kidnapping)': 7,
+            'Unarmed Assault': 8,
+            'Hostage Taking (Barricade Incident)': 9}
+data1997['mapping'] = data1997['AttackType'].map(dict_map)
+data1997[['AttackType', 'mapping']].head(7)
 
 
 fig= go.Figure(go.Scattermapbox(lat= data1997['latitude'],
     lon=data1997['longitude'],
     mode='markers', 
-    marker = go.scattermapbox.Marker(size=data1997['Killed']*0.1,color=data1997['Killed'], colorscale='deep', opacity=0.7), # wanted to color by size and color as attacktype, but was lazy to encode data into categories
+    marker = go.scattermapbox.Marker(size=data1997['Killed']*0.1,color=data1997['mapping'], colorscale='deep', opacity=0.7), # wanted to color by size and color as attacktype, but was lazy to encode data into categories
     text = data1997[['Killed', 'AttackType', 'city', 'Year']],
     hoverinfo='text'))
 
