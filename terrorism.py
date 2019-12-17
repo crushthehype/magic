@@ -50,7 +50,7 @@ data1997[['AttackType', 'mapping']].head(7)
 fig= go.Figure(go.Scattermapbox(lat= data1997['latitude'],
     lon=data1997['longitude'],
     mode='markers', 
-    marker = go.scattermapbox.Marker(size=data1997['Killed']*0.1,color=data1997['mapping'], colorscale='deep', opacity=0.7), # wanted to color by size and color as attacktype, but was lazy to encode data into categories
+    marker = go.scattermapbox.Marker(size=data1997['Killed']*0.1,color=data1997['mapping'], opacity=0.7), # wanted to color by size and color as attacktype, but was lazy to encode data into categories
     text = data1997[['Killed', 'AttackType', 'city', 'Year']],
     hoverinfo='text'))
 
@@ -64,11 +64,9 @@ fig.update_layout(hovermode='closest',
         showlegend = False,
         mapbox_style='dark',
         title = 'Terrorist attacks 1997-2017;number of people killed, attack type, year',
-        font=dict(color='rgb(255,255,255)'),
         width = 1500,
         height = 850,
-        title_x = 0.5,
-        paper_bgcolor='rgb(25,26,26)')
+        title_x = 0.5)
 fig.write_html('terrorism.html', auto_open=True)
 
 # end
